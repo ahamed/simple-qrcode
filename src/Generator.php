@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleSoftwareIO\QrCode;
+namespace Ahamed\QrCode;
 
 use BaconQrCode\Common\ErrorCorrectionLevel;
 use BaconQrCode\Encoder\Encoder;
@@ -162,7 +162,7 @@ class Generator
      *
      * @param string $text
      * @param string|null $filename
-     * @return void|\Illuminate\Support\HtmlString|string
+     * @return void|string
      * @throws WriterException
      * @throws InvalidArgumentException
      */
@@ -181,10 +181,6 @@ class Generator
             return;
         }
 
-        if (class_exists(\Illuminate\Support\HtmlString::class)) {
-            return new \Illuminate\Support\HtmlString($qrCode);
-        }
-
         return $qrCode;
     }
 
@@ -193,7 +189,7 @@ class Generator
      *
      * @param string $filepath
      * @param float $percentage
-     * @param SimpleSoftwareIO\QrCode\boolean|bool $absolute
+     * @param Ahamed\QrCode\boolean|bool $absolute
      * @return Generator
      */
     public function merge(string $filepath, float $percentage = .2, bool $absolute = false): self
@@ -571,7 +567,7 @@ class Generator
     {
         $method = ucfirst($method);
 
-        $class = "SimpleSoftwareIO\QrCode\DataTypes\\".$method;
+        $class = "Ahamed\QrCode\DataTypes\\".$method;
 
         return $class;
     }

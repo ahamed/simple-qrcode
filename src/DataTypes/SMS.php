@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleSoftwareIO\QrCode\DataTypes;
+namespace Ahamed\QrCode\DataTypes;
 
 class SMS implements DataTypeInterface
 {
