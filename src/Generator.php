@@ -3,6 +3,7 @@
 namespace Ahamed\QrCode;
 
 use BaconQrCode\Common\ErrorCorrectionLevel;
+use BaconQrCode\Common\Version;
 use BaconQrCode\Encoder\Encoder;
 use BaconQrCode\Exception\WriterException;
 use BaconQrCode\Renderer\Color\Alpha;
@@ -166,9 +167,9 @@ class Generator
      * @throws WriterException
      * @throws InvalidArgumentException
      */
-    public function generate(string $text, string $filename = null)
+    public function generate(string $text, string $filename = null, ?Version $forcedVersion = null)
     {
-        $qrCode = $this->getWriter($this->getRenderer())->writeString($text, $this->encoding, $this->errorCorrection);
+        $qrCode = $this->getWriter($this->getRenderer())->writeString($text, $this->encoding, $this->errorCorrection, $forcedVersion);
 
         if ($this->imageMerge !== null && $this->format === 'png') {
             $merger = new ImageMerge(new Image($qrCode), new Image($this->imageMerge));
